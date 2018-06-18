@@ -1,7 +1,7 @@
-import { Options as GameOptions } from "../config";
+import { Options as GameOptions } from "../../config";
 import { drawGrid } from "../draw-grid";
 import { drawPlayer } from "../draw-player";
-import { Player } from "../models";
+import { Player } from "../../models";
 
 export function redraw(
   context: CanvasRenderingContext2D,

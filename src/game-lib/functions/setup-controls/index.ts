@@ -1,4 +1,4 @@
-import { KeyEvents, Options as GameOptions } from "../config";
+import { KeyEvents, Options as GameOptions } from "../../config";
 import { redraw } from "../redraw";
 
 export function setupControls(context: CanvasRenderingContext2D) {
