@@ -1,6 +1,5 @@
-import { KeyEvents } from "./key-events";
-import { redraw } from "./redraw";
-import { Options as GameOptions } from "./options";
+import { KeyEvents, Options as GameOptions } from "../config";
+import { redraw } from "../redraw";
 
 export function setupControls(context: CanvasRenderingContext2D) {
   document.addEventListener("keydown", (event: KeyboardEvent) => {
