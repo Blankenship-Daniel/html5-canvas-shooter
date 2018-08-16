@@ -1,22 +1,18 @@
 import "./style.css";
-import {
-  Options as GameOptions,
-  drawGrid,
-  drawPlayer,
-  setupControls,
-  Player
-} from "./game-lib";
+import { Router, RouterEvents } from "./lib/router";
 
-const canvasEl: HTMLCanvasElement = document.querySelector("canvas");
-canvasEl.width = GameOptions.CANVAS_WIDTH;
-canvasEl.height = GameOptions.CANVAS_HEIGHT;
-const context: CanvasRenderingContext2D = canvasEl.getContext("2d");
+const pageEls = [].slice.call(document.querySelectorAll("section[page]"));
 
-drawGrid(
-  context,
-  GameOptions.CANVAS_WIDTH,
-  GameOptions.CANVAS_HEIGHT,
-  GameOptions.CANVAS_SQUARE_SIZE
-);
-setupControls(context);
-drawPlayer(context, Player);
+// Router
+Router.init();
+window.addEventListener(RouterEvents.ROUTE_CHANGE, (ev: any) => {
+  pageEls.forEach(pageEl => pageEl.classList.remove("active"));
+
+  try {
+    document
+      .querySelector(`section[page='${ev.detail}']`)
+      .classList.add("active");
+  } catch (e) {
+    document.querySelector(`section[page='/404']`).classList.add("active");
+  }
+});
